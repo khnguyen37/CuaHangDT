@@ -1,0 +1,81 @@
+﻿@model IEnumerable<QuanLyCuaHangDienThoaiDiDong.Models.PHANQUYEN>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TrangKhungAdmin.cshtml";
+}
+
+<h2 style=" font-size: 26px; font-weight: 700; font-family: -webkit-body; margin-left: 41%;">PHÂN QUYỀN</h2>
+
+
+<div style=" height: 540px; overflow-y: auto;">
+
+    <table class="table table-bordered" style="text-align:center;">
+        <thead style=" text-align: center inherit; background-color: #126860; color: white;">
+            <tr>
+                <th>
+                    STT
+                </th>
+                <th>
+                    TÊN NV
+                </th>
+                <th>
+                    QL Đơn Hàng
+                </th>
+                <th>
+                    QL Sản Phẩm
+                </th>
+                <th>
+                    QL Khách Hàng
+                </th>
+                <th>
+                    QL Nhà Cung Cấp
+                </th>
+                <th>
+                    QL Nhập Hàng
+                </th>
+                <th>
+                    Thống Kê 
+                </th>
+                <th>Chức Năng</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MANV)
+                </td>
+                <td>
+                    @item.NHANVIEN.HOTEN
+                </td>
+                <td style="pointer-events: none; cursor: default; background-color: #e1eae2; ">
+                    @Html.CheckBox("qldh", bool.Parse(item.QL_DONHANG.ToString()))
+                </td>
+                <td style="pointer-events: none; cursor: default; background-color: #e1eae2;">
+                    @Html.CheckBox("qlsp", bool.Parse(item.QL_SANPHAM.ToString()))
+                </td>
+                <td style="pointer-events: none; cursor: default; background-color: #e1eae2;">
+                    @Html.CheckBox("qlkh", bool.Parse(item.QL_KHACHHANG.ToString()))
+                </td>
+                <td style="pointer-events: none; cursor: default; background-color: #e1eae2;">
+                    @Html.CheckBox("qlkh", bool.Parse(item.QL_NHACC.ToString()))
+                </td>
+                <td style="pointer-events: none; cursor: default; background-color: #e1eae2; ">
+                    @Html.CheckBox("qlnh", bool.Parse(item.QL_NHAPHANG.ToString()))
+                </td>
+                <td style="pointer-events: none; cursor: default; background-color: #e1eae2;">
+                    @Html.CheckBox("tk", bool.Parse(item.THONGKE.ToString()))
+                </td>
+                <td>
+                    @Html.ActionLink("Phân Quyền", "PhanQuyen", new { id = item.ID }, new { @class = "ChucNang" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+
+
+
+

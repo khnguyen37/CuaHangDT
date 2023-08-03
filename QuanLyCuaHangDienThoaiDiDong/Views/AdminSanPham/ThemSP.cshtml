@@ -1,0 +1,71 @@
+﻿@model QuanLyCuaHangDienThoaiDiDong.Models.SANPHAM
+
+@{
+    ViewBag.Title = "ThemSP";
+    Layout = "~/Views/Shared/TrangKhungAdmin.cshtml";
+}
+
+<div class="container">
+    <div style="display:flex;padding:12px">
+        <div style=" font-weight: bold; background-color: #076713; padding: 3px 9px; border-radius: 5px;">
+            <a href="@Url.Action("Index", "AdminSanPham")">
+                <img src="~/Images/Icons/Back.png" width="40" />
+                BACK
+            </a>
+        </div>
+        <div>
+            <span style="font-size: 20px; font-weight: bold; padding-left: 357px;">THÊM SẢN PHẨM</span>
+        </div>
+    </div>
+    @using (Html.BeginForm("XuLyThemSP", "AdminSanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <table class="table">
+                <tr>
+                    <td>Tên Sản phẩm: </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.TENSP, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TENSP)
+                    </td>
+                    <td>Thương hiệu: </td>
+                    <td>
+                        @Html.DropDownList("MATH", null, new { @class = "form-control" })
+                    </td>
+                    <td>Nhà cung cấp: </td>
+                    <td>
+                        @Html.DropDownList("MANCC", null, new { @class = "form-control" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Số lượng tồn: </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.SOLUONG, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.SOLUONG)
+                    </td>
+                    <td>Giá bán: </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.GIABAN, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.GIABAN)
+                    </td>
+                    <td>Hình ảnh: </td>
+                    <td>
+                        <input type="file" name="UploadFile" class="btn btn-dark" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mô tả: </td>
+                    <td colspan="5">
+                        @Html.TextBoxFor(model => model.THONGTIN, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.THONGTIN)
+                    </td>
+                </tr>
+            </table>
+            <p>
+                <input type="submit" value="THÊM" class="btn btn-primary" />
+            </p>
+        </fieldset>
+    }
+</div>

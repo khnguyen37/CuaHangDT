@@ -1,0 +1,50 @@
+﻿@model IEnumerable<QuanLyCuaHangDienThoaiDiDong.Models.NHACC>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TrangKhungAdmin.cshtml";
+}
+
+<h2 style=" font-size: 26px; font-weight: 700; font-family: -webkit-body; margin-left: 41%;">NHÀ CUNG CẤP</h2>
+<div style=" border-radius: 5px; background-color: #1ae1eb; width: 18%; font-weight: bold; ">
+    <img src="~/Images/Icons/sub_blue_add.png" />
+    @Html.ActionLink("Thêm Nhà Cung Cấp", "ThemNCC")
+</div>
+<div style=" height: 540px; overflow-y: auto;">
+    <table class="table table-bordered" style="text-align:center">
+        <thead style=" text-align: center inherit; background-color: #126860; color: white;">
+            <tr>
+                <th>
+                    Tên Khách Hàng
+                </th>
+                <th>
+                    Địa Chỉ
+                </th>
+                <th>
+                    Điện Thoại
+                </th>
+                <th>Chức Năng</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TENNCC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DCHI)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DTHOAI)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "SuaNCC", new { id = item.MANCC }, new { @class = "ChucNang" })
+                    @Html.ActionLink("Xóa", "XoaNCC", new { id = item.MANCC }, new { @class = "ChucNang" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

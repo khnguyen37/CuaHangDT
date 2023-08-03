@@ -1,0 +1,56 @@
+﻿@using QuanLyCuaHangDienThoaiDiDong.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TrangKhung.cshtml";
+}
+
+@if (Model == null || Model.SoMatHang() == 0)
+{
+    <div style=" border-radius: 5px; font-size: 25px; font-weight: bold; background-color: #5dddf2; text-align: center;">Bạn chưa mua sản phẩm nào</div>
+}
+else
+{
+    @model GioHang
+    <h2>Thông tin giỏ hàng đã chọn</h2>
+    <table class="table" style="background-color: #b6d8d3;border-radius: 5px;}">
+        <thead style=" background-color: #386f78; color: white; font-weight: 700; }">
+            <tr>
+                @*<td>Mã Sản Phẩm</td>*@
+                <td>Tên Sản Phẩm</td>
+                <td>Ảnh</td>
+                <td>Số Lượng</td>
+                <td>Đơn Giá</td>
+                <td>Thành Tiền</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        @foreach (Item item in Model.lst)
+        {
+            <tr>
+                @*<td>@item.iMaSP</td>*@
+                <td>@item.sTenSP</td>
+                <td><img src="~/Images/HinhAnh/@item.sHinhAnh" width="70" /></td>
+                <td>@item.iSoLuong</td>
+                <td>@string.Format("{0:N0}", @item.dDonGia)đ</td>
+                <td>@string.Format("{0:N0}", @item.ThanhTien)đ</td>
+                <td></td>
+                @*<td><a href="#" class="btn btn-secondary">Chi tiết</a></td>*@
+                <td><a href="/Cart/Xoa/@item.iMaSP" class="btn btn-secondary">Xóa</a></td>
+                @*<td><a href="/Cart/SuaHG" class="btn btn-secondary">Sửa</a></td>*@
+            </tr>
+        }
+        <tr style="font-weight:bold">
+            <td colspan="2">Tổng</td>
+            <td class="text-danger">@Model.TongSLHang()</td>
+            <td></td>
+            <td class="text-danger">@string.Format("{0:#,##}", Model.TongThanhTien())đ</td>
+            <td> <a href="/Cart/XoaGH" class="btn btn-danger">Xóa giỏ hàng</a></td>
+            <td colspan="2">
+                @Html.ActionLink("Đặt hàng", "XacNhanThongTin", "LuuDatHang", new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    </table>
+
+}

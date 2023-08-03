@@ -1,0 +1,20 @@
+﻿@using QuanLyCuaHangDienThoaiDiDong.Models;
+@model List<CHITIETHD>
+
+<table>
+    <tr>
+        <td>Mã Sản Phẩm</td>
+        <td>Tên Sản Phẩm</td>
+        <td>Đơn giá</td>
+        <td>Số lượng</td>
+    </tr>
+    @foreach (var ct in Model)
+    {
+        <tr>
+            <td>@ct.MASP</td>
+            <td>@ct.SANPHAM.TENSP</td>
+            <td>@ct.SANPHAM.GIABAN</td>
+            <td>@ct.SOLUONG</td>
+        </tr>
+    }
+</table>

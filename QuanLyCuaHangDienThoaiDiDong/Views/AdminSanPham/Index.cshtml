@@ -1,0 +1,80 @@
+﻿@model IEnumerable<QuanLyCuaHangDienThoaiDiDong.Models.SANPHAM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TrangKhungAdmin.cshtml";
+}
+
+<h2 style=" font-size: 26px; font-weight: 700; font-family: -webkit-body; margin-left: 41%;">SẢN PHẨM</h2>
+
+<div style=" border-radius: 5px; background-color: #1ae1eb; width: 14%; font-weight: bold; ">
+    <img src="~/Images/Icons/sub_blue_add.png" />
+    @Html.ActionLink("Thêm Sản phẩm", "ThemSP")
+</div>
+<div style=" height: 540px; overflow-y: auto;">
+    <table class="table table-bordered" style="text-align:center">
+        <thead style=" text-align: center inherit; background-color: #126860; color: white;">
+            <tr>
+                <th style="width:25%">
+                    Tên Sản Phẩm
+                </th>
+                <th>
+                    Mã TH
+                </th>
+                <th>
+                    Nhà Cung Cấp
+                </th>
+                <th>
+                    Số Lượng Tồn
+                </th>
+                <th>
+                    DVT
+                </th>
+                <th>
+                    Giá Bán
+                </th>
+                @* <th>
+                        @Html.DisplayNameFor(model => model.THONGTIN)
+                    </th>*@
+                <th>
+                    Hình Ảnh
+                </th>
+                <th>Chức Năng</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TENSP)
+                </td>
+                <td>
+                    @item.THUONGHIEU.TENTH
+                </td>
+                <td>
+                    @item.NHACC.TENNCC
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SOLUONG)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DVT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GIABAN)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.THONGTIN)
+                    </td>*@
+                <td>
+                    <img src="~/Images/HinhAnh/@item.HINHANH" width="100" />
+                </td>
+                <td style=" display: inline-grid;">
+                    @Html.ActionLink("Sửa", "SuaSP", new { id = item.MASP }, new { @class = "ChucNang" })
+                    @Html.ActionLink("Xóa", "XoaSP", new { id = item.MASP }, new { @class = "ChucNang" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

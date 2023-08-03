@@ -1,0 +1,97 @@
+﻿@using QuanLyCuaHangDienThoaiDiDong.Models;
+@{
+    ViewBag.Title = "HienThiChiTiet";
+    Layout = "~/Views/Shared/TrangKhung.cshtml";
+    var ds1 = ViewBag.lst1 as List<SANPHAM>;
+}
+@model  SANPHAM
+<script src="~/Content/bootstrap/js/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".BookName").click(function (event) {
+            event.preventDefault();
+            var url = '@Url.Action("ThemVaoGHTheoSL", "Home", new { id = "idmasp", Soluong = "soluong" })';
+            url = url.replace("idmasp", '@Model.MASP');
+            url = url.replace("soluong", $('#txtSL').val());
+            window.location.href = url;
+        });
+    })
+
+</script>
+@*hien thi danh sach san pham*@
+<div style="display: flex; background-color: #ffffff; border-radius: 5px;">
+    <div style="width: 445px; height: 352px;">
+        <img src="/Images/HinhAnh/@Model.HINHANH" class="css-image" style="width: 445px; height: 352px; border-radius: 20px; padding: 15px;" />
+    </div>
+    <div style="margin-left: 7%;">
+        <h4>@Model.TENSP</h4>
+        <div style="font-size: 22px; margin-top: 25px; font-weight: bold;">
+            Giá:
+            <span style="color: red;"> @string.Format("{0:N0}", @Model.GIABAN)đ</span>
+        </div>
+        <div style="font-size: 22px; margin-top: 25px; font-weight: bold; ">
+            <label>Chọn số lượng</label>
+            <input type="text" id="txtSL" name="SoLuong" style="border-radius: 5px; width: 47px;" />
+        </div>
+        <div class="btn btn-primary" style="margin-top: 25px; ">
+            <a class="BookName" style="color:white">
+                THÊM VÀO GIỎ HÀNG
+            </a>
+        </div>
+        <hr />
+        <div>
+            <div style="font-size: 22px;font-weight:bold;">
+                Ưu đãi dành cho bạn
+                <img src="~/Images/Icons/info_blue.png" style="width: 25px; float: right;" />
+            </div>
+            <div>
+                <img src="~/Images/Icons/sticker_blue_sale.png" style="width: 35px;" />
+                <span>Giảm giá khi mua qua App</span>
+            </div>
+        </div>
+        <hr />
+        <div>
+            <div style="font-size: 22px;font-weight:bold;">
+                Quyền lợi khách hàng
+                <img src="~/Images/Icons/info_blue.png" style="width: 25px; float: right;" />
+            </div>
+            <div>
+                <div>
+                    <img src="~/Images/Icons/if_Shield.png" style="width: 25px;" />
+                    <span>48 Giờ hoàn trả</span>
+                </div>
+                <div>
+                    <img src="~/Images/Icons/if_Shield.png" style="width: 25px;" />
+                    <span>Trả góp 0%</span>
+                </div>
+                <div style="height: 25px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+@*hien thi san pham lien quan*@
+<div style="margin-top:1%;background-color:white;border-radius:5px;">
+    <h4 style=" font-weight: bold;">CÁC SẢN PHẨM LIÊN QUAN</h4>
+    <div class="row">
+        @foreach (var i in ds1)
+        {
+            <a href="@Url.Action("HienThiChiTiet", "Home", new { matl = @i.MASP })">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 product">
+                    <div class="product-item">
+                        <div class="product-item-detail">
+                            <img src="/Images/HinhAnh/@i.HINHANH" class="product-images css-image">
+                            <div class="product-item-detail-name">@i.TENSP</div>
+                            <p class="product-item-detail-price">@string.Format("{0:N0}", @i.GIABAN)đ</p>
+                            <a href="@Url.Action("ThemVaoGH", "Home", new { id = @i.MASP })">
+                                <div class="product-item-detail-detail ">
+                                    <img src="~/Images/Icons/shopping_cart.png" style=" width: 9%; margin-right: 3%;" />
+                                    THÊM VÀO GIỎ HÀNG
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+</div>

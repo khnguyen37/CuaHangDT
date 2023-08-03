@@ -1,0 +1,35 @@
+﻿@using QuanLyCuaHangDienThoaiDiDong.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TrangKhung.cshtml";
+
+}
+<style>
+    a:hover {
+        text-decoration: none;
+    }
+</style>
+
+<div class="row" style="height: 700px; overflow-y: auto;">
+    @foreach (SANPHAM item in Model)
+    {
+        <a href="@Url.Action("HienThiChiTiet", "Home", new { matl = @item.MASP })">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 product">
+                <div class="product-item">
+                    <div class="product-item-detail">
+                        <img src="/Images/HinhAnh/@item.HINHANH" class="product-images css-image">
+                        <div class="product-item-detail-name">@item.TENSP</div>
+                        <p class="product-item-detail-price">@string.Format("{0:N0}", @item.GIABAN) đ</p>
+                        <a href="@Url.Action("ThemVaoGH", "Home", new { id = @item.MASP})">
+                            <div class="product-item-detail-detail ">
+                                <img src="~/Images/Icons/shopping_cart.png" style=" width: 9%; margin-right: 3%;" />
+                                THÊM VÀO GIỎ HÀNG
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </a>
+    }
+</div>
+

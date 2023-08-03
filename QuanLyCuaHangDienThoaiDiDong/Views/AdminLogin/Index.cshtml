@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/TrangKhungAdmin.cshtml";
+
+}
+<link href="~/Content/CSS/Login.css" rel="stylesheet" />
+<link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Content/bootstrap/js/jquery-3.3.1.min.js"></script>
+<script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+
+<div style="text-align: center; background-image: url(../Images/Icons/Background1.png); border-radius: 5px; height: 755px;">
+    <form action="/AdminLogin/XuLyDangNhap" method="post">
+        <div class="container" style="padding:25px; margin-left:34%">
+            <div style="width: 450px; height: 500px; background-image: url(../Images/Icons/Br_login1.png); border-radius: 5px; box-shadow: 1px 1px 38.8px 3.2px rgb(25,31,53); padding: 50px; ">
+                <div>
+                    <div class="sign-in-text">ADMIN SIGN IN</div>
+                    <div class="sign-in-text-dec">Sign in to your account</div>
+                </div>
+                <div class="row" style="padding-bottom:40px;">
+                    <div class="col-md-4" style="text-align: left; font-weight: 700;">
+                        <img src="~/Images/Icons/administrator.png" style="margin-top: -20px;" />
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="input-text" name="txtUserName" placeholder="Username" style=" height: 115%"/>
+                    </div>
+                </div>
+                <div class="row" style="padding-bottom:15px;">
+                    <div class="col-md-4" style="text-align: left;  font-weight: 700;color:white;">
+                        <img src="~/Images/Icons/unlock.png" style="width: 59px;margin-top: -32px;" />
+                    </div>
+                    <div class="col-md-8">
+                        <input type="password" class="input-text" name="txtPassWord" placeholder="Password" />
+                    </div>
+                </div>
+                <div style="margin-top:45px;">
+                    <div style="color: #ff6dc5; height: 22px">
+                        @ViewBag.errorMassage
+                    </div>
+                    <input type="submit" value="Đăng nhập" class="btn-dangnhap" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+

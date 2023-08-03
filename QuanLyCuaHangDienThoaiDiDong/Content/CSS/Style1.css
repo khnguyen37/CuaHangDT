@@ -1,0 +1,113 @@
+﻿body {
+}
+
+.css-image{
+    width:76%;
+    height:96%;
+}
+.product-item {
+            width: 100%;
+            padding: 5px;
+            float: left;
+            margin: 0px 0px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .product-item-detail {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+            min-height: 340px;
+            border-radius: 5px;
+
+        }
+        
+        .product {
+            padding: 0px 0px !important;
+
+        }
+
+        .product-images {
+            position: initial;
+            max-width: 267px;
+            width: 240px;
+            height: 200px;
+            margin: auto;
+        }
+        .product-item-detail-name{
+            color: #000;
+            font-weight: 700;
+            text-align: initial;
+            padding: 15px 20px;
+        }
+        .product-item-detail-price{
+            color: red;
+            font-weight: 700;
+            position: absolute;
+            bottom: 15%;
+            margin: auto;
+            left: 39%;
+        }
+        .product-item-detail-detail-link{
+            color:white;
+        }
+        .product-item-detail-detail-link:hover{
+            text-decoration: none;
+        }
+        .product-item:hover{
+            box-shadow: 3px 3px 3px 3px rgb(162, 162, 162);
+        }
+
+        .product-item-detail-detail{
+            position: absolute;
+            bottom: 2%;
+            margin: auto;
+            /*left: 39%;*/
+            background-color: #e61717;
+            width: 100%;
+            padding: 10px;
+            font-weight: 700;
+            color:white;
+        }
+.product-item-detail-detail:hover {
+    background-color:#b41212;
+}
+        .TheLoai {
+            color: #000;
+            background-color: white;
+            padding: 10px;
+            border: 0px solid gray;
+            font-weight: 700;
+            border-radius: 3px;
+        }
+        .TheLoai:hover {
+                background-color: #1cf1c5;
+                transform: scale(1.05);
+         }
+        a:hover{
+            text-decoration:none;
+        }
+        .Images-icon {
+            width: 52px;
+            margin-left: 65%;
+        }
+        .Images-icon:hover {
+            transform: scale(1.2);
+        }
+        .Login {
+            border-radius: 5px;
+            padding: 4px;
+            margin-top: 5px;
+            background-color: #085ca4;
+            color: white;
+            border: 3px solid #0c3174;
+            font-weight: bold;
+        }
+        .Login:hover{
+            background-color:#234df0;
+            transform:scale(1.2);
+        }

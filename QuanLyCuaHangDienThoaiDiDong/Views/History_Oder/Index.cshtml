@@ -1,0 +1,49 @@
+﻿@model IEnumerable<QuanLyCuaHangDienThoaiDiDong.Models.Class1>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TrangKhung.cshtml";
+}
+
+<h2>LỊCH SỬ MUA HÀNG</h2>
+<table class="table">
+    <thead class="table-dark" style="background-color:#5c0707">
+        <tr>
+            <td>
+                Hình Ảnh
+            </td>
+            <td>
+                Sản Phẩm
+            </td>
+            <th>
+                Số Lượng
+            </th>
+            <th>
+                Đơn Giá
+            </th>
+            <th>
+                Thành Tiền
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="~/Images/HinhAnh/@item.sanpham.HINHANH" width="75" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sanpham.TENSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cthd.SOLUONG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cthd.DONGIA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cthd.THANHTIEN)
+            </td>
+        </tr>
+    }
+</table>

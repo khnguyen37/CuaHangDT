@@ -1,0 +1,39 @@
+﻿body {
+}
+
+.Menu {
+     color: white;
+     padding: 10px;
+     border: 1px solid gray;
+     font-weight: 700;
+}
+
+ .Menu:hover {
+       background-color: #1cf1c5;
+ }
+
+a:hover {
+  text-decoration: none;
+ }
+.admin-header {
+     background-color: white;
+     height: 100%;
+     margin-left: 0px;
+     padding: 5px 50px;
+     font-size: 27px;
+     font-weight: 700;
+     font-family: auto;
+ }
+
+.ChucNang{
+    font-weight: bold;
+    background-color: #3964ff;
+    padding: 1px 5px;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #e9dfdf;
+}
+.ChucNang:hover{
+    background-color:#122181;
+    color:white;
+}

@@ -1,0 +1,16 @@
+﻿
+<form action="/AdminThongKe/XuLyTimKiem" method="post">
+    <div class="container" style="margin-bottom:5px">
+        <div class="row">
+            <div class="col-md-2" style="font-size: 20px; font-weight: bold;">
+                Khách hàng
+            </div>
+            <div class="col-md-4">
+                @Html.DropDownList("MaKH", null, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>

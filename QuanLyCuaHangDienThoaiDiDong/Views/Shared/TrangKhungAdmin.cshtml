@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Content/bootstrap/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+    <link href="~/Content/CSS/Admin.css" rel="stylesheet" />
+</head>
+@using QuanLyCuaHangDienThoaiDiDong.Models;
+<body>
+    <div style="background-color:#EEE;min-height:680px">
+        <div style="width:100%; box-shadow: -5px -5px 5px #d7d7d7;">
+            <div class="row">
+                <div class="row col-10 admin-header">
+                    <a href="@Url.Action("Index","AdminHome")">
+                        <img src="~/Images/Icons/CarRepair.png" style="width:55px;" />
+                        ADMIN
+                    </a>
+                </div>
+                <div class="row col-2">
+                    @{
+                        if (Session["NhanVien"] != null)
+                        {
+                            var nv = Session["NhanVien"] as NHANVIEN;
+                            <div class="nav navbar" style=" margin-left: -30%;">
+                                <div class="dropdown">
+                                    <a class="nav-link dropdown-toggle btn btn-secondary" id="dropdownMenuButton" data-toggle="dropdown" href="#">
+                                        <span style=" color: white; font-weight: 700;">@nv.HOTEN</span>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                      
+                                        @{
+                            if (Session["NhanVien"] != null)
+                            {
+                                <a class="dropdown-item" href="/AdminHome/DangXuat"><span style="font-weight:bold">Đăng xuất</span> </a>
+                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="row" style="margin-left:0px;">
+                <div class="col-md-2">
+                    <ul class="nav flex-column" style="margin-left: -7%; height: 630px; background-color: #16134e; border-radius: 10px;">
+                        <li class="Menu" style=" color: white; height: 52px; background-color: #16134e;">
+                            <img src="~/Images/Icons/th-list-128.png" style=" width: 27px; height: 20px; margin-bottom: 2%;" />
+                            MENU
+                        </li>
+                        <li style=" display: contents">
+                        @{
+                            if (Session["PhanQuyen"] !=null)
+                            {
+                                var pq = Session["PhanQuyen"] as PHANQUYEN;
+                                if(@pq.QL_DONHANG == true)
+                                {
+                                    <a class="Menu" href="@Url.Action("QLDonDatHang", "AdminQuanLy")" >
+                                        <img src="~/Images/Icons/gear.png" style="width: 30px;" />QUẢN LÝ ĐƠN HÀNG
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="Menu" href="@Url.Action("QLDonDatHang", "AdminQuanLy")" style="pointer-events: none; cursor: default; background-color: #5f6a85;">
+                                        <img src="~/Images/Icons/gear.png" style="width: 30px;" />QUẢN LÝ ĐƠN HÀNG
+                                    </a>
+                                }
+
+                            }
+                          }
+                            @{
+                                if (Session["PhanQuyen"] != null)
+                                {
+                                    var pq = Session["PhanQuyen"] as PHANQUYEN;
+                                    if (@pq.QL_SANPHAM == true)
+                                    {
+                                        <a class="Menu" href="@Url.Action("Index","AdminSanPham")">
+                                            <img src="~/Images/Icons/gear.png" style="width: 30px;" /> SẢN PHẨM
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="Menu" href="@Url.Action("Index","AdminSanPham")" style="pointer-events: none; cursor: default; background-color: #5f6a85;">
+                                            <img src="~/Images/Icons/gear.png" style="width: 30px;" /> SẢN PHẨM
+                                        </a>
+                                    }
+
+                                }
+                            }
+                            @{
+                                if (Session["PhanQuyen"] != null)
+                                {
+                                    var pq = Session["PhanQuyen"] as PHANQUYEN;
+                                    if (@pq.QL_KHACHHANG == true)
+                                    {
+                                        <a class="Menu" href="@Url.Action("Index", "AdminKhachHang")">
+                                            <img src="~/Images/Icons/gear.png" style="width: 30px;" /> KHÁCH HÀNG
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="Menu" href="@Url.Action("Index", "AdminKhachHang")" style="pointer-events: none; cursor: default; background-color: #5f6a85;">
+                                            <img src="~/Images/Icons/gear.png" style="width: 30px;" /> KHÁCH HÀNG
+                                        </a>
+                                    }
+
+                                }
+                            }
+                            @{
+                                if (Session["PhanQuyen"] != null)
+                                {
+                                    var pq = Session["PhanQuyen"] as PHANQUYEN;
+                                    if (@pq.QL_NHACC == true)
+                                    {
+                                        <a class="Menu" href="@Url.Action("Index", "AdminNhaCungCap")">
+                                            <img src="~/Images/Icons/gear.png" style="width: 30px;" /> NHÀ CUNG CẤP
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="Menu" href="@Url.Action("Index", "AdminNhaCungCap")" style="pointer-events: none; cursor: default; background-color: #5f6a85;">
+                                            <img src="~/Images/Icons/gear.png" style="width: 30px;" /> NHÀ CUNG CẤP
+                                        </a>
+                                    }
+
+                                }
+                            }
+                            @{
+                                if (Session["PhanQuyen"] != null)
+                                {
+                                    var pq = Session["PhanQuyen"] as PHANQUYEN;
+                                    if (@pq.QL_NHAPHANG == true)
+                                    {
+                                        <a class="Menu" href="@Url.Action("ThemPN", "AdminNhapHang")">
+                                            <img src="~/Images/Icons/gear.png" style="width: 30px;" /> NHẬP HÀNG
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="Menu" href="@Url.Action("ThemPN", "AdminNhapHang")" style="pointer-events: none; cursor: default; background-color: #5f6a85;">
+                                            <img src="~/Images/Icons/gear.png" style="width: 30px;" /> NHẬP HÀNG
+                                        </a>
+                                    }
+
+                                }
+                            }
+                            @{
+                                if (Session["PhanQuyen"] != null)
+                                {
+                                    var pq = Session["PhanQuyen"] as PHANQUYEN;
+                                    if (@pq.THONGKE == true)
+                                    {
+                                        <a class="Menu" href="@Url.Action("Index", "AdminThongKe")">
+                                            <img src="~/Images/Icons/gear.png" style="width: 30px;" /> THỐNG KÊ DOANH THU
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="Menu" href="@Url.Action("Index", "AdminThongKe")" style="pointer-events: none; cursor: default; background-color: #5f6a85;">
+                                            <img src="~/Images/Icons/gear.png" style="width: 30px;" /> THỐNG KÊ DOANH THU
+                                        </a>
+                                    }
+
+                                }
+                            }   
+
+                            @{
+                                if (Session["NhanVien"] !=null)
+                                {    
+                                    var nv = Session["NhanVien"] as NHANVIEN;
+                                    if(@nv.TAIKHOANNV=="admin")
+                                    {
+                                     <a class="Menu" href="@Url.Action("Index", "AdminNhanVien")">
+                                      <img src="~/Images/Icons/gear.png" style="width: 30px;" /> NHÂN VIÊN
+                                     </a>
+                                     <a class="Menu" href="@Url.Action("Index", "AdminPhanQuyen")">
+                                      <img src="~/Images/Icons/gear.png" style="width: 30px;" /> PHÂN QUYỀN
+                                     </a>
+                                    }
+                                }
+                            }
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-10" style=" border-radius: 5px;">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

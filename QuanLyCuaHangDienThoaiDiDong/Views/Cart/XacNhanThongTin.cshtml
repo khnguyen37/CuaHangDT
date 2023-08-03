@@ -1,0 +1,36 @@
+﻿@using QuanLyCuaHangDienThoaiDiDong.Models;
+@{
+    ViewBag.Title = "XacNhanThongTin";
+    Layout = "~/Views/Shared/TrangKhung.cshtml";
+}
+
+@model KHACHHANG
+
+<div class="container">
+    <h2 style="text-align:center">Xác nhận thông tin đặt hàng</h2>
+    <form action="/Cart/LuuDatHang" method="post">
+        <table class="table" style="border: 2px solid #c8cccc;">
+            <thead class="table-dark" style="background-color: #940404;">
+                <tr>
+                    <td>Tên:</td>
+                    <td>Giới tính:</td>
+                    <td>Địa chỉ:</td>
+                    <td>Điện thoại</td>
+                    <td>Ngày đặt:</td>
+                    <td>Nhân viên:</td>
+                    <td>Ngày hẹn giao:</td>
+                </tr>
+            </thead>
+            <tr>
+                <td>@Model.TENKH</td>
+                <td>@Model.GIOITINH</td>
+                <td>@Model.DIACHI</td>
+                <td>@Model.DIENTHOAI</td>
+                <td>@DateTime.Now.ToShortDateString()</td>
+                <td>@Html.DropDownList("MANV", null, null, new { @class = "form-control" })</td>
+                <td><input type="date" name="txtDate" class="form-control"></td>
+            </tr>
+        </table>
+        <input type="submit" value="Xác nhận đặt hàng" class="btn btn-danger" />
+    </form>
+</div>

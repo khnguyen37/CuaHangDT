@@ -1,0 +1,38 @@
+﻿@model IEnumerable<QuanLyCuaHangDienThoaiDiDong.Models.CHITIETPN>
+
+@{
+    ViewBag.Title = "Index";
+}
+<table class="table">
+    <tr>
+        <th> Mã SP </th>
+        <th> Số Lượng </th>
+        <th> Giá Nhập </th>
+        <th> Thành Tiền</th>
+        <th>Tổng tiền</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MASP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SOLUONG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GIANHAP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.THANHTIEN)
+            </td>
+            <td>@item.PHIEUNHAP.TIENNHAP</td>
+            <td>
+                @Html.ActionLink("Sửa", "SuaCTPN", new { id = item.MAPN, ma = item.MASP }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Xóa", "XoaCTPN", new { id = item.MAPN, masp = item.MASP }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+    }
+
+</table>

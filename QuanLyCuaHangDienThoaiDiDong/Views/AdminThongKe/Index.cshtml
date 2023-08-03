@@ -1,0 +1,62 @@
+﻿@model IEnumerable<QuanLyCuaHangDienThoaiDiDong.Models.HOADON>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TrangKhungAdmin.cshtml";
+}
+
+
+<div class="container">
+    <center style=" font-size: 25px; font-weight: bold; margin-bottom: 15px;">THỐNG KÊ DOANH THU</center>
+    <div>
+        @Html.Action("Search", "AdminThongKe")
+        @Html.Action("Search1", "AdminThongKe")
+        <table>
+            <tr>
+                <td style="font-size:20px;font-weight:bold">TỔNG DOANH THU: </td>
+                <td style="font-size:20px;font-weight:bold">@ViewBag.tongdt</td>
+            </tr>
+        </table>
+    </div>
+    <table class="table">
+        <thead class="table-dark" style="background-color:#103191">
+            <tr>
+                <th> Nhân viên</th>
+                <th> Khách hàng </th>
+                <th> Ngày bán </th>
+                <th> Ngày giao hàng </th>
+                <th>  Số lượng bán </th>
+                <th> Doanh thu </th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.NHANVIEN.HOTEN
+                    @*@Html.DisplayFor(modelItem => item.MANV)*@
+                    
+                </td>
+                <td>
+                    @item.KHACHHANG.TENKH
+                    @*@Html.DisplayFor(modelItem => item.MAKH)*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NGAYBAN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NGAYGIAO)
+                </td>
+                <td>
+      
+                    @Html.Action("ThongKeSL", "AdminThongKe", new { mhd = item.MAHD })
+                    @*@Html.DisplayFor(modelItem => item.NGAYTHANHTOAN)*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TONGTIEN)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

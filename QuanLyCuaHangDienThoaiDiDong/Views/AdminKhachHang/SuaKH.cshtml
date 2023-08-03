@@ -1,0 +1,80 @@
+﻿@model QuanLyCuaHangDienThoaiDiDong.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "SuaKH";
+    Layout = "~/Views/Shared/TrangKhungAdmin.cshtml";
+}
+
+<div class="container">
+    <div style="display:flex;padding:12px">
+        <div style=" font-weight: bold; background-color: #076713; padding: 3px 9px; border-radius: 5px;">
+            <a href="@Url.Action("Index", "AdminKhachHang")">
+                <img src="~/Images/Icons/Back.png" width="40" />
+                BACK
+            </a>
+        </div>
+        <div>
+            <span style="font-size: 20px; font-weight: bold; padding-left: 357px;">SỬA KHÁCH HÀNG</span>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("XuLySuaKH", "AdminKhachHang", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>KHÁCH HÀNG</legend>
+
+            @Html.HiddenFor(model => model.MAKH)
+            <table class="table">
+                <tr>
+                    <td>Tên KH</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.TENKH, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TENKH)
+                    </td>
+                    <td>Giới tính</td>
+                    <td>
+                        <div style="display:flex">
+                            <div style="margin-left: 5%">
+                                @Html.RadioButtonFor(model => model.GIOITINH, "Nam")
+                                Nam
+                            </div>
+                            <div style="margin-left:10% ">
+                                @Html.RadioButtonFor(model => model.GIOITINH, "Nữ")
+                                Nữ
+                            </div>
+                        </div>
+                    </td>
+                    <td>Địa chỉ</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.DIACHI, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DIACHI)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Điện thoại</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.DIENTHOAI, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DIENTHOAI)
+                    </td>
+                    <td>Tài khoản</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.TAIKHOANKH, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TAIKHOANKH)
+                    </td>
+                    <td>Mật Khẩu </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.MATKHAUKH, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MATKHAUKH)
+                    </td>
+                </tr>
+            </table>
+            <p>
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+            </p>
+        </fieldset>
+    }
+</div>
+

@@ -1,0 +1,12 @@
+﻿@using QuanLyCuaHangDienThoaiDiDong.Models;
+@model List<CHITIETHD>
+<table>
+    <tr>
+        <td>SỐ LƯỢNG:</td>
+        <td>@Model.Count</td>
+    </tr>
+    <tr>
+        <td>GIÁ BÁN:</td>
+        <td>@string.Format("{0:N0}", @ViewBag.tt)</td>
+    </tr>
+</table>

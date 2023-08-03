@@ -1,0 +1,12 @@
+﻿@using QuanLyCuaHangDienThoaiDiDong.Models;
+@model List<THUONGHIEU>
+
+<ul class="nav flex-column">
+
+    @foreach (var l in Model)
+    {
+        <li class="border">
+            @Html.ActionLink(l.TENTH, "HTSanPhamTheoTH", "Home", new { ml = @l.MATH }, new { @class = "nav-link TheLoai" })
+        </li>
+    }
+</ul>

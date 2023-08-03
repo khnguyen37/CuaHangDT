@@ -1,0 +1,51 @@
+﻿@model QuanLyCuaHangDienThoaiDiDong.Models.NHACC
+
+@{
+    ViewBag.Title = "ThemNCC";
+    Layout = "~/Views/Shared/TrangKhungAdmin.cshtml";
+}
+
+<div class="container">
+    <div style="display:flex;padding:12px">
+        <div style=" font-weight: bold; background-color: #076713; padding: 3px 9px; border-radius: 5px;">
+            <a href="@Url.Action("Index", "AdminNhaCungCap")">
+                <img src="~/Images/Icons/Back.png" width="40" />
+                BACK
+            </a>
+        </div>
+        <div>
+            <span style="font-size: 20px; font-weight: bold; padding-left: 357px;">THÊM KHÁCH NHÀ CUNG CẤP</span>
+        </div>
+    </div>
+    @using (Html.BeginForm("XuLyThemNCC", "AdminNhaCungCap", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <table class="table">
+                <tr>
+                    <td>Họ tên: </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.TENNCC, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TENNCC)
+                    </td>
+                    <td>Địa chỉ: </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.DCHI, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DCHI)
+                    </td>
+                    <td>Điện thoại: </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.DTHOAI, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DTHOAI)
+                    </td>
+                </tr>
+            </table>
+            <p>
+                <input type="submit" value="THÊM" class="btn btn-primary" />
+            </p>
+        </fieldset>
+    }
+
+</div>

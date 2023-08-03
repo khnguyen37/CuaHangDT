@@ -1,0 +1,69 @@
+﻿@model IEnumerable<QuanLyCuaHangDienThoaiDiDong.Models.KHACHHANG>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TrangKhungAdmin.cshtml";
+}
+
+<h2 style=" font-size: 26px; font-weight: 700; font-family: -webkit-body; margin-left: 41%;">KHÁCH HÀNG</h2>
+<div style=" border-radius: 5px; background-color: #1ae1eb; width: 16%; font-weight: bold; ">
+    <img src="~/Images/Icons/sub_blue_add.png" />
+    @Html.ActionLink("Thêm Khách Hàng", "ThemKH")
+</div>
+<div style=" height: 540px; overflow-y: auto;">
+    <table class="table table-bordered" style="text-align:center">
+        <thead style=" text-align: center inherit; background-color: #126860; color: white;">
+            <tr>
+                <th>
+                    Tên Khách Hàng
+                </th>
+                <th>
+                    Giới Tính
+                </th>
+                <th>
+                    Địa Chỉ
+                </th>
+                <th>
+                    Điện Thoại
+                </th>
+                <th>
+                    Tài Khoản
+                </th>
+                <th>
+                    Mật Khẩu
+                </th>
+                <th>Chức Năng</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TENKH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GIOITINH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DIACHI)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DIENTHOAI)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TAIKHOANKH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MATKHAUKH)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "SuaKH", new { id = item.MAKH }, new { @class = "ChucNang" })
+                    @*@Html.ActionLink("Details", "Details", new { id = item.MAKH }, new { @class = "ChucNang" })*@
+                    @Html.ActionLink("Xóa", "XoaKH", new { id = item.MAKH }, new { @class = "ChucNang" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

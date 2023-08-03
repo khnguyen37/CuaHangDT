@@ -1,0 +1,80 @@
+﻿@using QuanLyCuaHangDienThoaiDiDong.Models;
+@{
+    ViewBag.Title = "ThemPN";
+    Layout = "~/Views/Shared/TrangKhungAdmin.cshtml";
+}
+@model PHIEUNHAP
+
+<div class="container">
+    @using (Html.BeginForm("XuLyThemPN", "AdminNhapHang", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>PHIẾU NHẬP</legend>
+
+            <table class="table">
+                <tr>
+                    <td>Nhân Viên</td>
+                    <td>
+                        @Html.DropDownList("MANV", null, new { @class = "form-control" })
+                    </td>
+                    <td>Nhà Cung Cấp</td>
+                    <td>
+                        @Html.DropDownList("MANCC", null, new { @class = "form-control" })
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Ghi Chú</td>
+                    <td colspan="2">
+                        @Html.TextBoxFor(model => model.GHICHU, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.GHICHU)
+                    </td>
+                    <td>
+                        <input type="submit" value="THÊM HD NHẬP" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    }
+    @using (Html.BeginForm("XuLyThemCTPN", "AdminNhapHang", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>CHI TIẾT PHIẾU NHẬP</legend>
+
+            <table class="table">
+                <tr>
+                    <td>Tên SP</td>
+                    <td>
+                        @Html.DropDownList("MASP", null, new { @class = "form-control" })
+                    </td>
+                    <td>Số lượng</td>
+                    <td>
+                        <input type="text" name="txtSL" class="form-control">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Giá Nhập</td>
+                    <td>
+                        <input type="text" name="txtGN" class="form-control">
+                    </td>
+                    <td>
+                        <input type="submit" value="NHẬP HÀNG" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    }
+    <div>
+        @Html.Action("Index", "AdminNhapHang")
+    </div>
+</div>
+
+
+

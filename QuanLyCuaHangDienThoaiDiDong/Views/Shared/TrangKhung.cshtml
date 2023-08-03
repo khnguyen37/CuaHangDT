@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/CSS/Style1.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Content/bootstrap/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+</head>
+@using QuanLyCuaHangDienThoaiDiDong.Models;
+<body>
+    <div style="background-color:#EEE;min-height:680px">
+        <div class="container" style="max-width: 1400px; box-shadow: -5px -5px 5px #d7d7d7;">
+            <div class="row" style="background-image: linear-gradient(#bc0707, #840303)">
+                <div style="display: flex;  margin-left: 85%;">
+                    <a href="@Url.Action("Index","Login")">
+                        <div class="Login" style="margin-right:5px">
+                            Đăng nhập
+                        </div>
+                    </a>
+                    <a href="@Url.Action("Index","Register")">
+                        <div class="Login">
+                            Đăng Ký
+                        </div>
+                    </a>
+                </div>
+                <div class="row col-12" style="background-color: #e5101d; margin-top: 0.7%; height: 60%; margin-left: 0px;">
+                    <div class="col-md-3">
+                        <a href="@Url.Action("Index","Home")">
+                            <img src="~/Images/Icons/home.png" class="Images-icon" />
+                        </a>
+                    </div>
+                    <div class="col-md-5">
+                        @Html.Action("Search", "Home")
+                    </div>
+                    <div class="col-md-2">
+                        @{
+                            if (Session["KhachHang"] != null)
+                            {
+                                var k = Session["KhachHang"] as KHACHHANG;
+                                <div class="nav navbar" style=" margin-left: -30%;">
+                                    <div class="dropdown">
+                                        <a class="nav-link dropdown-toggle btn btn-secondary" id="dropdownMenuButton" data-toggle="dropdown" href="#">
+                                            <span style=" color: white; font-weight: 700;">@k.TENKH</span>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="/History_Oder/Index"><span style="font-weight:bold">Lịch sử mua hàng</span></a>
+                                            @{
+                                if (Session["KhachHang"] != null)
+                                {
+                                    <a class="dropdown-item" href="/Home/DangXuat"><span style="font-weight:bold">Đăng xuất</span> </a>
+                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <div class="col-md-2">
+                        <a href="@Url.Action("Index","Cart")">
+                            <img src="~/Images/Icons/shopping_trolley.png" class="Images-icon" style=" margin-left: 10%; " />
+                        </a>
+
+                        @{
+                            GioHang g = Session["gio"] as GioHang;
+                            if (g != null)
+                            {
+                                <span style=" padding: 0px 6px; background-color: #8dff45; border-radius: 20px; margin-left: -14px; font-weight: bold; position: relative; top: -3px;">
+                                    @g.SoMatHang()
+                                </span>
+                            }
+                            else
+                            {
+                                <span style=" padding: 0px 6px; background-color: #8dff45; border-radius: 20px; margin-left: -14px; font-weight: bold; position: relative; top: -3px;">0</span>
+                            }
+
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row" style=" margin-top: 27px;">
+                <div class="col-md-2">
+                    <ul class="nav flex-column" style="margin-left:-7%;">
+                        <li class="TheLoai" style="background-color: #cc2e2e; color: white; transform:scale(1.0)">
+                            THƯƠNG HIỆU
+                        </li>
+                        <li style=" display: contents">
+                            @Html.Action("HTThuongHieu", "Home")
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-10" style=" border-radius: 5px; min-height:600px">
+                    @RenderBody()
+
+                </div>
+            </div>
+            <div style="background-color: white; height: 100%; width: 101%; border-radius: 5px;">
+                <div class="row">
+                    <div class="col-md-2"><img src="~/Images/Icons/HoTro.PNG" width="200" style="padding:5px;" /></div>
+                    <div class="col-md-2"><img src="~/Images/Icons/HopTac.PNG" width="200" style="padding:5px;" /></div>
+                    <div class="col-md-2"><img src="~/Images/Icons/TraGop.PNG" width="200" style="padding:5px;" /></div>
+                    <div class="col-md-2"><img src="~/Images/Icons/KetNoi.PNG" width="200" style="padding:5px;" /></div>
+                    <div class="col-md-4" style="padding: 10px; color: #756f6f;">
+                        <p style="font-weight:bold">Báo cáo đồ án cửa hàng Điện thoại di động</p>
+                        <p>Thành viên nhóm : Trần Minh Tân , Nguyễn Đình Khả, Lê Viết Tường, Trần Hiếu Nghĩa</p>
+                        <p>Địa chỉ văn phòng: 140, Lê Trọng Tấn, phường Tây Thạnh, quận Tân Phú, thành phố Hồ Chí Minh</p>
+                        <p>Nhận đặt hàng trực tuyến và giao hàng tận nơi, chưa hỗ trợ mua và nhận hàng trực tiếp tại văn phòng hoặc trung tâm xử lý đơn hàng</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

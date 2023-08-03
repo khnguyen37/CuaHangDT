@@ -1,0 +1,120 @@
+﻿@model IEnumerable<QuanLyCuaHangDienThoaiDiDong.Models.HOADON>
+@{
+    ViewBag.Title = "QLDonDatHang";
+    Layout = "~/Views/Shared/TrangKhungAdmin.cshtml";
+    var stt = 0;
+}
+
+<div class="container">
+    <center style="font-size:20px; font-weight:bold;padding:5px">QUẢN LÝ ĐƠN HÀNG</center>
+    <form action="/AdminQuanLy/CapNhatGiaoHang" method="post">
+        <div style="height: 540px; overflow-y: auto;">
+            <table class="table table-bordered">
+                <thead style="background-color:#0094ff">
+                    <tr>
+                        <th>
+                            STT
+                        </th>
+                        <th>
+                            Ngày Đặt Hàng
+                        </th>
+                        <th>
+                            Ngày Giao
+                        </th>
+                        <th>
+                            Thông tin KH
+                        </th>
+                        <th>
+                            Ngày thanh toán
+                        </th>
+                        <th>
+                            Thông tin SP
+                        </th>
+                        <th>
+                            Tình trạng
+                        </th>
+                        <th>Duyệt giao hàng</th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    stt++;
+                    <tr>
+                        <td>
+                            @stt
+                        </td>
+                        <td>
+                            @string.Format("{0:dd-MM-yyyy}", item.NGAYBAN)
+                        </td>
+                        <td>
+                            @string.Format("{0:dd-MM-yyyy}", item.NGAYGIAO)
+                        </td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>MÃ KH:</td>
+                                    <td>@Html.DisplayFor(modelItem => item.MAKH)</td>
+                                </tr>
+                                <tr>
+                                    <td>TÊN KH:</td>
+                                    <td>@item.KHACHHANG.TENKH</td>
+                                </tr>
+                                <tr>
+                                    <td>SĐT:</td>
+                                    <td>@item.KHACHHANG.DIENTHOAI</td>
+                                </tr>
+                                <tr>
+                                    <td>ĐỊA CHỈ:</td>
+                                    <td>@item.KHACHHANG.DIACHI</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            @string.Format("{0:dd-MM-yyyy}", item.NGAYTHANHTOAN)
+                        </td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td style="text-align:center">MÃ HD: @item.MAHD</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.Action("ThongKe", "AdminQuanLy", new { mhd = item.MAHD })
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="nav navbar">
+                                <div class="dropdown">
+                                    <a class="nav-link dropdown-toggle" id="dsct" data-toggle="dropdown" href="#" style=" border-radius: 5px; background-color: #0094ff; color: white; font-weight: bold; margin-left: 30px;">
+                                        CHI TIẾT
+                                        <div class="dropdown-menu" aria-labelledby="dsct">
+                                            @Html.Action("LietKeHoaDon", "AdminQuanLy", new { mhd = @item.MAHD })
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            @if (item.NGAYTHANHTOAN == null)
+                            {
+                                <input type="checkbox" name="abc" disabled style="display: flex;" /><text>Chưa giao </text>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="abc" checked disabled style="display: flex;" /> <text>Đã giao </text>
+                            }
+                        </td>
+                        <td>
+                            @if (item.NGAYTHANHTOAN == null) //chưa giao
+                            {
+                                <input type="checkbox" name="@stt" value="@stt" />
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <input type="hidden" name="tong" value="@stt" />
+        <input type="submit" value="Giao hàng ngay" class="btn btn-danger" />
+    </form>
+</div>

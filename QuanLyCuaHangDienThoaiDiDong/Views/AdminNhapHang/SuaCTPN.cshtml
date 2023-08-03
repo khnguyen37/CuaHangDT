@@ -1,0 +1,50 @@
+﻿@model QuanLyCuaHangDienThoaiDiDong.Models.CHITIETPN
+
+@{
+    ViewBag.Title = "SuaCTPN";
+    Layout = "~/Views/Shared/TrangKhungAdmin.cshtml";
+}
+
+
+@using (Html.BeginForm("XuLySuaCTPN", "AdminNhapHang", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <div style="display:flex;padding:12px">
+            <div style=" font-weight: bold; background-color: #076713; padding: 3px 9px; border-radius: 5px;">
+                <a href="@Url.Action("ThemPN", "AdminNhapHang")">
+                    <img src="~/Images/Icons/Back.png" width="40" />
+                    BACK
+                </a>
+            </div>
+            <div>
+                <span style="font-size: 20px; font-weight: bold; padding-left: 357px;">SỬA MẶT HÀNG NHẬP</span>
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.MAPN)
+
+        @Html.HiddenFor(model => model.MASP)
+        <table class="table">
+            <tr>
+                <td>Số lượng</td>
+                <td>
+                    @Html.EditorFor(model => model.SOLUONG, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SOLUONG)
+                </td>
+                <td>Giá Nhập</td>
+                <td>
+                    @Html.TextBoxFor(model => model.GIANHAP, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.GIANHAP)
+                </td>
+                <td>
+                    <input type="submit" value="Lưu" class="btn btn-primary" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+}
+
+

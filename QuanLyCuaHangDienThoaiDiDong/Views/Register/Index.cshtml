@@ -1,0 +1,102 @@
+﻿@model QuanLyCuaHangDienThoaiDiDong.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TrangKhung.cshtml";
+}
+<style>
+    .css-lb {
+        text-align: left;
+        font-weight: 700;
+    }
+    .css-tb {
+        padding-bottom: 9px;
+    }
+</style>
+<div style="text-align: center; background-image: url(../Images/Icons/Background.png); border-radius: 5px;">
+
+    <div class="container" style="padding: 25px; margin-left: 27%;">
+        <div class="" style="width: 450px; height: 500px; background-image: url(../Images/Icons/Br_register.png); border-radius: 5px; box-shadow: 1px 1px 38.8px 3.2px rgb(25,31,53); padding: 36px; ">
+            @using (Html.BeginForm("XuLyDangKy", "Register", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div>
+                    <div class="sign-in-text" style="font-weight: bold; font-size: 20px; margin-bottom: 30px; margin-top: 19px; }">REGISTER</div>
+                </div>
+                <div class="row css-tb">
+                    <div class="col-md-5 css-lb">
+                        Họ Tên
+                    </div>
+                    <div class="col-md-7">
+                        @Html.TextBoxFor(model => model.TENKH, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TENKH)
+                    </div>
+                </div>
+                <div class="row css-tb">
+                    <div class="col-md-5 css-lb">
+                        Giới tính
+                    </div>
+                    <div class="col-md-7" style="display:flex">
+                        <div style="margin-left: 5%;">
+                            @Html.RadioButtonFor(model => model.GIOITINH, "Nam")
+                            Nam
+                        </div>
+                        <div style=" margin-left: 12%;">
+                            @Html.RadioButtonFor(model => model.GIOITINH, "Nữ")
+                            Nữ
+                        </div>
+                    </div>
+                </div>
+                <div class="row css-tb">
+                    <div class="col-md-5 css-lb">
+                        Địa Chỉ
+                    </div>
+                    <div class="col-md-7">
+                        @Html.TextBoxFor(model => model.DIACHI, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DIACHI)
+                    </div>
+                </div>
+                <div class="row css-tb">
+                    <div class="col-md-5 css-lb">
+                        Điện Thoại
+                    </div>
+                    <div class="col-md-7">
+                        @Html.TextBoxFor(model => model.DIENTHOAI, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DIENTHOAI)
+                    </div>
+                </div>
+                <div class="row css-tb">
+                    <div class="col-md-5 css-lb">
+                        Tài Khoản
+                    </div>
+                    <div class="col-md-7">
+                        @Html.TextBoxFor(model => model.TAIKHOANKH, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TAIKHOANKH)
+                    </div>
+                </div>
+                <div class="row css-tb">
+                    <div class="col-md-5 css-lb">
+                        Mật Khẩu
+                    </div>
+                    <div class="col-md-7">
+                        @Html.PasswordFor(model => model.MATKHAUKH, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MATKHAUKH)
+                    </div>
+                </div>
+                <div class="row css-tb">
+                    <div class="col-md-5 css-lb">
+                        Nhập lại mật khẩu
+                    </div>
+                    <div class="col-md-7">
+                        <input type="password" name="PasW" class="form-control" />
+                    </div>
+                </div>
+                <div style="color: red; height: 22px; margin-top: 8px; ">
+                    @ViewBag.errorMassage
+                </div>
+                <input type="submit" value="Đăng Ký" class="btn btn-primary" style=" border-radius: 22px; width: 280px;" />
+            }
+        </div>
+    </div>
+</div>

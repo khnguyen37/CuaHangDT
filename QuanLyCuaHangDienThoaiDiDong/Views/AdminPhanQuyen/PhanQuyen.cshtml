@@ -1,0 +1,85 @@
+﻿@model QuanLyCuaHangDienThoaiDiDong.Models.PHANQUYEN
+    @{
+        ViewBag.Title = "PhanQuyen";
+        Layout = "~/Views/Shared/TrangKhungAdmin.cshtml";
+    }
+
+    @using (Html.BeginForm("XuLyPhanQuyen", "AdminPhanQuyen", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <div class="container">
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <span style="font-size: 20px; font-weight: bold; padding-left: 357px;">PHÂN QUYỀN</span>
+                <div style="background-color:#1d750d; width:30%; border-radius:5px; color:white; padding:5px;" >
+                    <span style="font-size: 20px; font-weight: bold">
+                        NHÂN VIÊN:
+                    </span>
+                    <span style="font-size:20px;">
+
+                        @Html.DisplayFor(model => model.NHANVIEN.HOTEN, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MANV)
+                    </span>
+                </div>
+
+                @Html.HiddenFor(model => model.ID)
+                <table class="table table-bordered">
+                    <thead style=" text-align: center inherit; background-color: #126860; color: white;">
+                        <tr>
+                            <th>
+                                QL Đơn Hàng
+                            </th>
+                            <th>
+                                QL Sản Phẩm
+                            </th>
+                            <th>
+                                QL Khách Hàng
+                            </th>
+                            <th>
+                                QL Nhà Cung Cấp
+                            </th>
+                            <th>
+                                QL Nhập Hàng
+                            </th>
+                            <th>
+                                Thống Kê
+                            </th>
+                            <th>Chức Năng</th>
+                        </tr>
+                    </thead>
+                        <tr>
+
+                            <td>
+                                @Html.RadioButtonFor(model => model.QL_DONHANG, "true") True
+                                @Html.RadioButtonFor(model => model.QL_DONHANG, "false") False
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.QL_SANPHAM, "true") True
+                                @Html.RadioButtonFor(model => model.QL_SANPHAM, "false") False
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.QL_KHACHHANG, "true") True
+                                @Html.RadioButtonFor(model => model.QL_KHACHHANG, "false") False
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.QL_NHACC, "true") True
+                                @Html.RadioButtonFor(model => model.QL_NHACC, "false") False
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.QL_NHAPHANG, "true") True
+                                @Html.RadioButtonFor(model => model.QL_NHAPHANG, "false") False
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.THONGKE, "true") True
+                                @Html.RadioButtonFor(model => model.THONGKE, "false") False
+                            </td>
+                            <td>
+                                <input type="submit" value="Phân Quyền" class="btn btn-primary" />
+                            </td>
+                        </tr>
+</table>
+            </fieldset>
+    </div>
+    }

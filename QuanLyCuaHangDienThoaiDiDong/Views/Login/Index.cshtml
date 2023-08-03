@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TrangKhung.cshtml";
+
+}
+<link href="~/Content/CSS/Login.css" rel="stylesheet" />
+
+<div style="text-align: center; background-image: url(../Images/Icons/Background.png); border-radius: 5px; }">
+    <form action="/Login/XuLyDangNhap" method="post" style="display:inline-block">
+        <div class="container" style="padding:25px">
+            <div class="" style="width: 450px; height: 500px; background-image: url(../Images/Icons/Br_login.png); border-radius: 5px; box-shadow: 1px 1px 38.8px 3.2px rgb(25,31,53); padding: 50px; ">
+                <div>
+                    <div class="sign-in-text">SIGN IN</div>
+                    <div class="sign-in-text-dec">Sign in to your account</div>
+                </div>
+                <div class="row" style="padding-bottom:40px;">
+                    <div class="col-md-4" style="text-align: left; font-weight: 700;">
+                        <img src="~/Images/Icons/administrator.png" style="margin-top: -20px;" />
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="input-text" name="txtUserName" placeholder="Username" />
+                    </div>
+                </div>
+                <div class="row" style="padding-bottom:15px;">
+                    <div class="col-md-4" style="text-align: left;  font-weight: 700;color:white;">
+                        <img src="~/Images/Icons/unlock.png" style="width: 59px;margin-top: -32px;" />
+                    </div>
+                    <div class="col-md-8">
+                        <input type="password" class="input-text" name="txtPassWord" placeholder="Password" />
+                    </div>
+                </div>
+                <div style="margin-top:45px;">
+                    <div style="color: #ff6dc5; height: 22px">
+                        @ViewBag.errorMassage
+                    </div>
+                    <input type="submit" value="Đăng nhập" class="btn-dangnhap" />
+                </div>
+                <div>
+                    <a href="@Url.Action("Index","Register")">
+                        Đăng ký tài khoản ?
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
